@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<p:growl id="messages" showDetail="true" sticky="true" />
+			<p:accordionPanel>
+				<p:tab title="Registros Abertos">
+					<p:dataTable value="#{bRegistro.disponiveisList}" var="reg"
+						style="Witdh: 18px;"
+						emptyMessage="Não Existem registros disponiveis">
+
+						<p:column>
+							<f:facet name="header">Nome</f:facet>
+								#{reg.livro.nome}
+							</p:column>
+						<p:column>
+							<f:facet name="header">Dono</f:facet>
+								#{reg.livro.pessoa.nome}
+							</p:column>
+						<p:column>
+							<f:facet name="header">Emprestado Para</f:facet>
+                 				#{reg.pessoa.nome} 
+							</p:column>
+						<p:column>
+							<f:facet name="header">Data</f:facet>
+								#{reg.date}
+							</p:column>
+						<p:column >
+							<f:facet name="header">Situação</f:facet>
+								#{reg.livro.disposicao}
+							</p:column>
+						<p:column width="40">
+							<f:facet name="Ações">Situação</f:facet>
+							<p:commandButton value="" action="#{bRegistro.alterar(reg)}"
+								update="@form" icon="ui-icon-check"
+								style="width: 30px; height: 20px" />
+						</p:column>
+					</p:dataTable>
+				</p:tab>
+				<p:tab title="Todos os Registros">
+					<center><p:commandButton value="Atualizar" action="#{bRegistro.atualizar}"
+						update="@form" /></center>
+					<p:dataTable value="#{bRegistro.registroList}" var="reg"
+						style="Witdh: 18px;"
+						emptyMessage="Não Existem registros disponiveis" rows="10"
+						paginator="true"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="5,10,15" id="dtAllRegs">
+
+						<p:column filterBy="#{reg.livro.nome}" filterMatchMode="contains">
+							<f:facet name="header">Livro</f:facet>
+								#{reg.livro.nome}
+							</p:column>
+						<p:column filterBy="#{reg.livro.pessoa.nome}" filterMatchMode="contains"> 
+							<f:facet name="header">Dono</f:facet>
+								#{reg.livro.pessoa.nome}
+							</p:column>
+						<p:column filterBy="#{reg.pessoa.nome}" filterMatchMode="contains">
+							<f:facet name="header">Emprestado Para</f:facet>
+                 				#{reg.pessoa.nome} 
+							</p:column>
+						<p:column>
+							<f:facet name="header">Data</f:facet>
+								#{reg.date}
+							</p:column>
+						<p:column>
+							<f:facet name="header">Situação</f:facet>
+								#{reg.situacao}
+							</p:column>
+					</p:dataTable>
+				</p:tab>
+			</p:accordionPanel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

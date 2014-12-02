@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:pe="http://primefaces.org/ui/extensions">
+	  
+	<ui:composition template="/_template.xhtml">
+		<ui:define name="conteudo">
+			<center><p:panel id="basic" header="Biblioteca da 404 Softhouse" style="margin-bottom:20px; margin-top:20px; max-height: 125px; max-width: 450px; text-align:center">
+        		<p:commandButton value="Visualizar Registros" onclick="location.href='Registros.xhtml'"/>
+        		<h6>Você pode visualizar os registros ou ver mais opções na barra acima</h6>
+        		<h:form><p:growl id="messages" showDetail="true" sticky="true" /></h:form>
+    		</p:panel></center>
+		</ui:define>
+	</ui:composition>
+</html>

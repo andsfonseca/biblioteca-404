@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<p:growl id="messages" showDetail="true" sticky="true" />
+			<p:tabView>
+				<p:tab title="Visualizar Usuários">
+					<p:dataTable value="#{bPessoa.pessoaList}" var="user"
+						style="Witdh: 18px;" editable="true" editMode="cell"
+						emptyMessage="Usuários não cadastrados">
+						<p:ajax event="cellEdit" listener="#{bPessoa.alterar}" />
+						
+						<p:column width="80">
+							<f:facet name="header">Perfis</f:facet>
+							<pe:gravatar value="#{user.email}"/>
+						</p:column>
+						
+						<p:column filterBy="#{user.username}" filterMatchMode="contains">
+							<f:facet name="header">Username</f:facet>
+							<strong><center>#{user.username}</center></strong>
+						</p:column>
+						
+						<p:column filterBy="#{user.nome}" filterMatchMode="contains">
+
+							<f:facet name="header">Nome</f:facet>
+							<p:cellEditor>
+								<f:facet name="output">
+									<center><h:outputText value="#{user.nome}" /></center>
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText id="modelInput" value="#{user.nome}"
+										style="width:96%" required="true"></p:inputText>
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+
+						<p:column filterBy="#{user.email}" filterMatchMode="contains">
+							<f:facet name="header">Email</f:facet>
+							<center>#{user.email}</center>
+						</p:column>
+						
+						<p:column width="80" rendered="#{bLogin.pessoa.adm}">
+							<f:facet name="header">Ações</f:facet>
+							<p:row>
+								<p:commandButton action="#{bPessoa.remover(user)}"
+									value="Remover" update="@form" />
+							</p:row>
+						</p:column>
+
+					</p:dataTable>
+					
+				</p:tab>
+			</p:tabView>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

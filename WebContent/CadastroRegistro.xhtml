@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:pe="http://primefaces.org/ui/extensions">
+	  
+	<ui:composition template="/_template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+			
+				<p:growl id="messages" showDetail="true" sticky="true" />
+				
+				<center><p:panel id="basic" header="Cadastro de Registros" style="margin-bottom:20px; margin-top:20px; max-width: 450px; text-align:center">
+						<p:outputLabel value="Livro: " />
+						<p:outputLabel id="nomelivro" value=" #{bRegistro.livro.nome}" />
+						<p:commandButton id="livrodrop" icon="ui-icon-folder-open" type="button" style="margin-left:5px"/>
+						
+    					<p:overlayPanel id="panellivro" for="livrodrop" hideEffect="fade" style="width:400px">
+        					<p:dataTable value="#{bRegistro.livroList}" var="book" style="Witdh: 18px;" emptyMessage="Livros não cadastrados">
+							
+								<p:column filterBy="#{book.nome}" filterMatchMode="contains">
+									<f:facet name="header" >Livro</f:facet>
+                 					#{book.nome}
+								</p:column>
+							
+					    		<p:column filterBy="#{pessoa.nome}" filterMatchMode="contains">
+									<f:facet name="header">Dono</f:facet>
+                 				 	#{book.pessoa.nome}
+								</p:column>
+								
+								<p:column width="60">
+									<f:facet name="header">Ações</f:facet>
+									<p:commandButton value="Pegar" update=":nomelivro" ajax="false">
+											<f:setPropertyActionListener value="#{book}" target="#{bRegistro.livro}" type="button"/>
+									</p:commandButton>
+								</p:column>
+							
+							</p:dataTable>
+						</p:overlayPanel>
+						
+			 			<p:outputLabel style="margin-left:20px;" value="Emprestado para: "/>	
+						<p:outputLabel id="nomepes" value=" #{bRegistro.pessoa.nome}" />
+						<p:commandButton id="imageBtn" icon="ui-icon-folder-open" type="button" style="margin-left:5px"/>
+						
+    					<p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" style="width:400px">
+        					<p:dataTable value="#{bRegistro.pessoaList}" liveResize="true" var="user" emptyMessage="Usuários não cadastrados">
+							
+								<p:column filterBy="#{user.username}" filterMatchMode="contains">							
+									<f:facet name="header">Username</f:facet>
+                 					#{user.username}
+								</p:column>
+							
+								<p:column filterBy="#{user.nome}" filterMatchMode="contains">							
+									<f:facet name="header">Nome</f:facet>
+                 					#{user.nome}
+								</p:column>
+								
+								<p:column width="60">
+									<f:facet name="header">Ações</f:facet>
+									<p:commandButton value="Pegar" update=":nomepes" ajax="false">
+											<f:setPropertyActionListener value="#{user}" target="#{bRegistro.pessoa}" type="button"/>
+									</p:commandButton>
+								</p:column>
+							
+							</p:dataTable>
+   						</p:overlayPanel><br/>
+   						
+   						<p:outputLabel id="notaslabel" value="Notas: " />
+   						<p:inputTextarea rows="1" cols="33" style="margin-top:10px" counter="display" maxlength="150" counterTemplate="{0} Caracateres Restantes." value="#{bRegistro.registro.notas}"/><br/>
+   						<p:outputLabel id="display" />
+						<br/><p:commandButton style="margin-top:10px" value="Confirmar Dados" action="#{bRegistro.salvar}" update="@all"/>
+ 
+					</p:panel></center>     
+			</h:form>            
+		</ui:define>             
+	</ui:composition> 
+</html>

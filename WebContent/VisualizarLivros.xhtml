@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:pe="http://primefaces.org/ui/extensions">
+	  
+	<ui:composition template="/_template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+				<p:growl id="messages" showDetail="true" sticky="true" />
+				<p:tabView>
+					<p:tab title="Visualizar Livros">
+						<p:dataTable value="#{bLivro.livroList}" var="book" style="Witdh: 18px;" editable="true" editMode="cell" emptyMessage="Livros não cadastrados">
+							<p:ajax event="cellEdit" listener="#{bLivro.alterar}" update=":messages"/>
+							<p:column width="100"><f:facet name="header">Livros</f:facet>
+							<p:cellEditor>
+                 					 <f:facet name="output"><img src="#{book.imagem}" style="width: 100px"/></f:facet>
+                 					 <f:facet name="input"><p:inputText value="#{book.imagem}" style="width:96%" required="true" update="@all"></p:inputText></f:facet>
+              					</p:cellEditor>
+								
+							</p:column>
+							<p:column filterBy="#{book.nome}" filterMatchMode="contains">
+							
+								<f:facet name="header">Nome</f:facet>
+								<p:cellEditor>
+                 					 <f:facet name="output"><strong><center><h:outputText value="#{book.nome}" /></center></strong></f:facet>
+                 					 <f:facet name="input"><p:inputText id="modelInput" value="#{book.nome}" style="width:96%" required="true" update="@all"></p:inputText></f:facet>
+              					</p:cellEditor>
+							</p:column>
+							
+							<p:column filterBy="#{book.autor}" filterMatchMode="contains">
+							
+								<f:facet name="header">Autor</f:facet>
+								<p:cellEditor>
+                 					 <f:facet name="output"><center><h:outputText value="#{book.autor}" /></center></f:facet>
+                 					 <f:facet name="input"><p:inputTextarea rows="1" cols="60" style="margin-top:10px; witdh: 96%"  maxlength="150" value="#{book.sinopse}" required="true"/></f:facet>
+              					</p:cellEditor>
+							</p:column>
+							
+							<p:column>
+							
+								<f:facet name="header">Sinopse</f:facet>
+								<p:cellEditor>
+                 					 <f:facet name="output"><h:outputText value="#{book.sinopse}" /></f:facet>
+                 					 <f:facet name="input"><p:inputText  value="#{book.sinopse}" style="width:96%" required="true" update="@all"></p:inputText></f:facet>
+              					</p:cellEditor>
+							</p:column>
+							
+					    	<p:column filterBy="#{book.pessoa.nome}" filterMatchMode="contains" width="140">
+								<f:facet name="header">Dono</f:facet>
+                 				 <center>#{book.pessoa.nome}</center>
+							</p:column>
+							
+							<p:column width="80">
+								<f:facet name="header">Disposição</f:facet>
+                 				 <center>#{book.disposicao}</center>
+							</p:column>
+							
+							<p:column width="80" rendered="#{bLogin.pessoa.adm}">
+								<f:facet name="header">Ações</f:facet>
+								<p:row>
+									<p:commandButton action="#{bLivro.remover(book)}" value="Remover" update="@form"/>  
+								</p:row>
+							</p:column>
+							
+						</p:dataTable>
+					</p:tab>     
+				</p:tabView>     
+			</h:form>            
+		</ui:define>             
+	</ui:composition> 
+</html>

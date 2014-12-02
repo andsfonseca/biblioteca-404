@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:pe="http://primefaces.org/ui/extensions">
+	<h:head>
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<title>404 SoftHouse</title>
+		<h:outputStylesheet library="css" name="stylesheet.css"/>
+		
+	</h:head>
+	
+    <h:body style="height: 100%;">
+    <div id="all" style="min-height: 100%;position: relative;"> 
+    	<div id="mensagens"><p:growl id="messages"/></div>
+    
+    	<div id="cabecalho" style="background-color:steelblue; border-radius: 5px;  border: 2px solid blue;">
+    			<p style="color:white; margin-left: 100px; font-size:20px"><STRONG style="font-size:100px">404</STRONG> Softhouse</p>
+    		<p:separator style="border: 2px solid white"></p:separator>
+    		<h:form>
+    			<p:menubar>
+    				<p:menuitem value="Tela Inicial" url="index.xhtml" icon="ui-icon-newwin" />
+    				
+    				
+    				<p:menuitem value="Todos os Registros" url="Registros.xhtml" icon="ui-icon-document"></p:menuitem>
+    					
+    				
+    				<p:submenu label="Visualizar" icon="ui-icon-disk">
+    					<p:menuitem value="Usuarios" url="VisualizarUsuarios.xhtml"></p:menuitem>
+    					<p:menuitem value="Livros" url="VisualizarLivros.xhtml"></p:menuitem>
+    				</p:submenu>
+    				
+    				<p:submenu label="Cadastrar" icon="ui-icon-pencil">
+    					<p:menuitem rendered="#{bLogin.pessoa.adm}" value="Usuarios" url="CadastroUsuarios.xhtml"></p:menuitem>
+    					<p:menuitem value="Livros" url="CadastroLivro.xhtml"></p:menuitem>
+    					<p:menuitem value="Registro" url="CadastroRegistro.xhtml"></p:menuitem>
+    				</p:submenu>
+    				
+    				
+    				<f:facet name="options">
+    					<p:commandButton style="margin-right:10px" type="button" value="Fazer Login" rendered="#{empty bLogin.pessoa.nome}" icon="ui-icon-person" onclick="PF('windowsLogin').show();"/>
+    					<p:commandButton style="margin-right:10px" id="Btn" type="button" value="#{bLogin.pessoa.username}" rendered="#{not empty bLogin.pessoa.nome}" icon="ui-icon-person" action="#{bLogin.logout}" update="@all"/>			
+    						<p:overlayPanel id="Panel" for="Btn" hideEffect="fade">
+    							<h:panelGrid columns="2">
+       							<pe:gravatar value="#{bLogin.pessoa.email}"></pe:gravatar>
+       							<h:panelGrid columns="1">
+       							<div style="margin-bottom: 10px;">#{bLogin.pessoa.nome}</div><div style="margin-top: 15px">#{bLogin.pessoa.email}</div>
+       							</h:panelGrid>
+       							</h:panelGrid>
+       							
+       							<p:commandButton style="margin-left:110px" value="Logout"/>
+    						</p:overlayPanel>
+            			<p:commandButton style="margin-right:10px" type="button" value="Redmine" onclick="location.href='http://redmine.404softhouse.com.br/'" icon="ui-icon-extlink" />
+        			</f:facet>
+    			</p:menubar>
+    		</h:form>
+    	</div>
+    	
+    	<div id="corpo" style="padding-bottom: 65px;">
+    		<ui:insert name="conteudo"/>
+    	</div>
+    	
+    	<div id="rodape" style="background-color:steelblue; border-radius: 5px;  border: 2px solid blue;position: absolute;width:100%;bottom: 0;">
+    		<H5 style="color:white; text-align: center;">404 Softhouse. Todos os Direitos Reservados</H5>
+    	</div>
+	</div>
+	
+	<div id="login">
+		<p:dialog header="Fazer Login" widgetVar="windowsLogin" dynamic="true" resizable="false">
+		 <h:form>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Username: " /> <p:inputText value="#{bLogin.pessoa.username}"/>
+				<p:outputLabel value="Senha: " /> <p:inputText value="#{bLogin.pessoa.senha}"/>
+			</h:panelGrid>
+			<center><p:commandButton style="margin-top:4px" value="Fazer Login" action="#{bLogin.efetuaLogin}" update="@all"/></center>
+	   	</h:form>
+		</p:dialog>	
+	</div>
+
+	<div id="canto" style="position:fixed; top:10px; float:right;opacity:0.65; -moz-opacity: 0.65; filter: alpha(opacity=65);"><p:commandButton icon="ui-icon-circle-check" rendered="#{bLogin.pessoa.adm}"/></div>
+	</h:body>
+</html>

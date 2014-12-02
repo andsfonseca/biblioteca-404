@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:pe="http://primefaces.org/ui/extensions">
+	  
+	<ui:composition template="/_template.xhtml">
+		<ui:define name="conteudo">
+			<h:form>
+			
+				<p:growl id="messages" showDetail="true" sticky="true" />
+				
+				<center><p:panel id="basic" header="Cadastro de Livros" style="margin-bottom:20px; margin-top:20px; max-width: 550px; text-align:center">
+						<p:outputLabel value="Livro: " />
+						<p:inputText value="#{bLivro.livro.nome}"/>
+						
+			 			<p:outputLabel style="margin-left:20px;" value="Dono: "/>	
+						<p:outputLabel id="nomepes" value=" #{bLivro.pessoa.nome}" />
+						<p:commandButton id="imageBtn" style="margin-left:5px" icon="ui-icon-folder-open" type="button" />
+						<p:commandButton  style="margin-left:5px" icon="ui-icon-refresh" action="#{bLivro.refreshPessoas}" update="@all"/>
+						
+    					<p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" style="width:400px">
+        					<p:dataTable value="#{bLivro.pessoaList}" liveResize="true" var="user" emptyMessage="Usuários não cadastrados">
+							
+								<p:column filterBy="#{user.username}" filterMatchMode="contains">							
+									<f:facet name="header">Username</f:facet>
+                 					#{user.username}
+								</p:column>
+								
+								<p:column filterBy="#{user.nome}" filterMatchMode="contains">							
+									<f:facet name="header">Nome</f:facet>
+                 					#{user.nome}
+								</p:column>
+								
+								<p:column width="60">
+									<f:facet name="header">Ações</f:facet>
+									<p:commandButton value="Pegar" update=":nomepes" ajax="false">
+											<f:setPropertyActionListener value="#{user}" target="#{bLivro.pessoa}" type="button"/>
+									</p:commandButton>
+								</p:column>
+							
+							</p:dataTable>
+   						</p:overlayPanel><br/>
+   						<p:fieldset legend="Informações Adicionais" style="margin-top: 5px">
+   						<p:outputLabel value="Autor: " />
+						<p:inputText value="#{bLivro.livro.autor}"/>
+						<p:outputLabel value="Imagem (URL): " style="margin-left:5px"/>
+						<p:inputText value="#{bLivro.livro.imagem}"/><br/>
+						<p:outputLabel value="Sinopse: " />
+						<p:inputTextarea rows="1" cols="60" style="margin-top:10px" counter="display" maxlength="150" counterTemplate="{0} Caracateres Restantes." value="#{bLivro.livro.sinopse}"/><br/>
+   						<p:outputLabel id="display" />
+						</p:fieldset>
+   						
+						<p:commandButton value="Confirmar Dados" style="margin-top:20px;" action="#{bLivro.salvar}" update="@all"/>
+ 
+					</p:panel></center>     
+			</h:form>            
+		</ui:define>             
+	</ui:composition> 
+</html>
