@@ -24,7 +24,7 @@
     					<p:overlayPanel id="imagePanel" for="imageBtn" hideEffect="fade" style="width:400px">
         					<p:dataTable value="#{bLivro.pessoaList}" liveResize="true" var="user" emptyMessage="Usuários não cadastrados">
 							
-								<p:column filterBy="#{user.username}" filterMatchMode="contains">							
+								<p:column filterBy="#{user.username}" filterMatchMode="contains" >							
 									<f:facet name="header">Username</f:facet>
                  					#{user.username}
 								</p:column>

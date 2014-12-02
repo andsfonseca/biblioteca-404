@@ -33,25 +33,25 @@
     					<p:menuitem value="Livros" url="VisualizarLivros.xhtml"></p:menuitem>
     				</p:submenu>
     				
-    				<p:submenu label="Cadastrar" icon="ui-icon-pencil">
-    					<p:menuitem rendered="#{bLogin.pessoa.adm}" value="Usuarios" url="CadastroUsuarios.xhtml"></p:menuitem>
+    				<p:submenu label="Cadastrar" icon="ui-icon-pencil" rendered="#{not empty bPessoa.login.nome}">
+    					<p:menuitem rendered="#{bPessoa.login.adm}" value="Usuarios" url="CadastroUsuarios.xhtml"></p:menuitem>
     					<p:menuitem value="Livros" url="CadastroLivro.xhtml"></p:menuitem>
     					<p:menuitem value="Registro" url="CadastroRegistro.xhtml"></p:menuitem>
     				</p:submenu>
     				
     				
     				<f:facet name="options">
-    					<p:commandButton style="margin-right:10px" type="button" value="Fazer Login" rendered="#{empty bLogin.pessoa.nome}" icon="ui-icon-person" onclick="PF('windowsLogin').show();"/>
-    					<p:commandButton style="margin-right:10px" id="Btn" type="button" value="#{bLogin.pessoa.username}" rendered="#{not empty bLogin.pessoa.nome}" icon="ui-icon-person" action="#{bLogin.logout}" update="@all"/>			
+    					<p:commandButton style="margin-right:10px" type="button" value="Fazer Login" rendered="#{empty bPessoa.login.nome}" icon="ui-icon-person" onclick="PF('windowsLogin').show();"/>
+    					<p:commandButton style="margin-right:10px" id="Btn" type="button" value="#{bPessoa.login.username}" rendered="#{not empty bPessoa.login.nome}" icon="ui-icon-person" action="#{bPessoa.logout}" update="@all"/>			
     						<p:overlayPanel id="Panel" for="Btn" hideEffect="fade">
     							<h:panelGrid columns="2">
-       							<pe:gravatar value="#{bLogin.pessoa.email}"></pe:gravatar>
+       							<pe:gravatar value="#{bPessoa.login.email}"></pe:gravatar>
        							<h:panelGrid columns="1">
-       							<div style="margin-bottom: 10px;">#{bLogin.pessoa.nome}</div><div style="margin-top: 15px">#{bLogin.pessoa.email}</div>
+       							<div style="margin-bottom: 10px;">#{bPessoa.login.nome}</div><div style="margin-top: 15px">#{bPessoa.login.email}</div>
        							</h:panelGrid>
        							</h:panelGrid>
        							
-       							<p:commandButton style="margin-left:110px" value="Logout"/>
+       							<p:commandButton style="margin-left:110px" action="#{bPessoa.logout}" value="Logout" update="@all"/>
     						</p:overlayPanel>
             			<p:commandButton style="margin-right:10px" type="button" value="Redmine" onclick="location.href='http://redmine.404softhouse.com.br/'" icon="ui-icon-extlink" />
         			</f:facet>
@@ -72,14 +72,14 @@
 		<p:dialog header="Fazer Login" widgetVar="windowsLogin" dynamic="true" resizable="false">
 		 <h:form>
 			<h:panelGrid columns="2">
-				<p:outputLabel value="Username: " /> <p:inputText value="#{bLogin.pessoa.username}"/>
-				<p:outputLabel value="Senha: " /> <p:inputText value="#{bLogin.pessoa.senha}"/>
+				<p:outputLabel value="Username: " /> <p:inputText value="#{bPessoa.login.username}"/>
+				<p:outputLabel value="Senha: " /> <p:inputText value="#{bPessoa.login.senha}"/>
 			</h:panelGrid>
-			<center><p:commandButton style="margin-top:4px" value="Fazer Login" action="#{bLogin.efetuaLogin}" update="@all"/></center>
+			<center><p:commandButton style="margin-top:4px" value="Fazer Login" action="#{bPessoa.elogin}" update="@all"/></center>
 	   	</h:form>
 		</p:dialog>	
 	</div>
 
-	<div id="canto" style="position:fixed; top:10px; float:right;opacity:0.65; -moz-opacity: 0.65; filter: alpha(opacity=65);"><p:commandButton icon="ui-icon-circle-check" rendered="#{bLogin.pessoa.adm}"/></div>
+	<div id="canto" style="position:fixed; top:10px; float:right;opacity:0.65; -moz-opacity: 0.65; filter: alpha(opacity=65);"><p:commandButton icon="ui-icon-circle-check" rendered="#{bPessoa.login.adm}"/></div>
 	</h:body>
 </html>

@@ -14,6 +14,7 @@ import DAO.DAO;
 import Entidades.Livro;
 import Entidades.Pessoa;
 import Entidades.Registro;
+import Funcoes.PessoasLogin;
 import Funcoes.PessoasRegistros;
 
 @SessionScoped
@@ -21,7 +22,9 @@ import Funcoes.PessoasRegistros;
 public class PessoasBean {
 
 	private PessoasRegistros PReg = new PessoasRegistros();
+	private PessoasLogin PLog = new PessoasLogin();
 	private Pessoa pessoa = new Pessoa();
+	private Pessoa login = new Pessoa();
 	private List<Pessoa> PessoaList;
 	private LivrosBean lb;
 	
@@ -29,6 +32,12 @@ public class PessoasBean {
 	// Getters and Setters 
 	public Pessoa getPessoa() {
 		return pessoa;
+	}
+	public Pessoa getLogin() {
+		return login;
+	}
+	public void setLogin(Pessoa login) {
+		this.login = login;
 	}
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
@@ -67,6 +76,14 @@ public class PessoasBean {
 		lb.atualizar();
 		atualizar();
 		
+	}
+	
+	public void elogin(){
+		this.login = PLog.efetuaLogin(login);
+	}
+	
+	public void logout(){
+		this.login = new Pessoa();
 		
 	}
 	
