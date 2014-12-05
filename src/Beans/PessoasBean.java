@@ -109,5 +109,9 @@ public class PessoasBean {
 		LivrosRegistros LReg = new LivrosRegistros();
 		LReg.salvar(livro, login);
 	}
+	
+	public boolean logado(){
+		return login.getNome() != null;
+	}
 
 }

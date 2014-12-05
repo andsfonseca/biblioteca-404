@@ -28,6 +28,7 @@ public class PessoasLogin {
 				
 				for(Pessoa pessoa: listPessoa){
 					login = pessoa;
+					context.addMessage(null, new FacesMessage("Login efetuado com sucesso" , "Bem Vindo "+login.getNome()) );
 					
 				}
 			}
