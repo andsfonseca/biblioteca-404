@@ -29,8 +29,17 @@ public class PessoasBean {
 	private Pessoa login = new Pessoa();
 	private List<Pessoa> PessoaList;
 	private Livro livro = new Livro();
+	private String check;
 
 	// Getters and Setters
+
+	public String getCheck() {
+		return check;
+	}
+
+	public void setCheck(String check) {
+		this.check = check;
+	}
 
 	public Livro getLivro() {
 		return livro;
@@ -79,9 +88,18 @@ public class PessoasBean {
 	}
 
 	public void salvarADM() throws NoSuchAlgorithmException {
-		PReg.salvar(pessoa);
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		if (check.equals(pessoa.getSenha())) {
+
+			PReg.salvar(pessoa);
+		} else {
+			context.addMessage(null, new FacesMessage("Erro!",
+					"Senhas não conferem"));
+		}
 		atualizar();
-		
+		check = new String();
+
 	}
 
 	public void remover(Pessoa pessoa) {
@@ -104,13 +122,13 @@ public class PessoasBean {
 		this.login = new Pessoa();
 
 	}
-	
-	public void salvarLivro(){
+
+	public void salvarLivro() {
 		LivrosRegistros LReg = new LivrosRegistros();
 		LReg.salvar(livro, login);
 	}
-	
-	public boolean logado(){
+
+	public boolean logado() {
 		return login.getNome() != null;
 	}
 

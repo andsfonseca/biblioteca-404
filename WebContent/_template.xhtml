@@ -73,7 +73,7 @@
 		 <h:form>
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Username: " /> <p:inputText value="#{bPessoa.login.username}"/>
-				<p:outputLabel value="Senha: " /> <p:inputText value="#{bPessoa.login.senha}"/>
+				<p:outputLabel value="Senha: " /> <p:password value="#{bPessoa.login.senha}"/>
 			</h:panelGrid>
 			<center><p:commandButton style="margin-top:4px" value="Fazer Login" action="#{bPessoa.elogin}" update="@all"/></center>
 	   	</h:form>
