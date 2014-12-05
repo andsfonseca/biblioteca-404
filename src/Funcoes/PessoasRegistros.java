@@ -1,5 +1,8 @@
 package Funcoes;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,12 +18,14 @@ import Entidades.Registro;
 
 public class PessoasRegistros {
 
-	public void salvar (Pessoa pessoa){
-		
+	public void salvar (Pessoa pessoa) throws NoSuchAlgorithmException{
+		Criptografia c = new Criptografia();
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		DAO<Pessoa> dao = new DAO<Pessoa>(Pessoa.class);
 
+		pessoa.setSenha(c.criptografia(pessoa.getSenha()));
+		
 		dao.salva(pessoa);
 		context.addMessage(null, new FacesMessage("Sucesso!" , pessoa.getNome() + " adicionado com sucesso!") );
 		System.out.println("Usuário Salvo com Sucesso no Banco de Dados");
@@ -94,4 +99,5 @@ public class PessoasRegistros {
 		}
 			
 	}
+	  
 }
