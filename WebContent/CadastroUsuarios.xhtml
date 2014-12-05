@@ -22,9 +22,9 @@
 						<p:inputText id="txtmail" required="true" value="#{bPessoa.pessoa.email}" validatorMessage="E-mail incorreto"><f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" /></p:inputText>
 						
 						<p:outputLabel value="Senha:  " style="margin-left: 5px"/>
-						<p:inputText id="txtsenha" required="true" value="#{bPessoa.pessoa.senha}" />
+						<p:password id="txtsenha" required="true" value="#{bPessoa.pessoa.senha}" />
 						<p:outputLabel value="Confirmar Senha:  " style="margin-left: 5px"/>
-						<p:inputText id="txtcheck" required="true" value="#{bPessoa.check}" />
+						<p:password id="txtcheck" required="true" value="#{bPessoa.check}" />
 						
 						</h:panelGrid>
 						
