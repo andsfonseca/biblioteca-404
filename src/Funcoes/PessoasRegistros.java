@@ -99,5 +99,22 @@ public class PessoasRegistros {
 		}
 			
 	}
+	
+	public Pessoa peopleRequest(Pessoa pessoa){
+		
+		DAO<Pessoa> dao = new DAO<Pessoa>(Pessoa.class);
+		String cmd = "Select e from Pessoa e where e.username = '"+ pessoa.getUsername() + "'" ;
+		
+		if(dao.validade(cmd)){
+			List<Pessoa> listPessoa = dao.commandlineSingle(cmd);
+			
+			for(Pessoa p: listPessoa){
+				pessoa = p;
+				
+			}
+		}
+		
+		return pessoa;
+	}
 	  
 }

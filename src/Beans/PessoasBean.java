@@ -28,7 +28,7 @@ public class PessoasBean {
 	private Pessoa pessoa = new Pessoa();
 	private Pessoa login = new Pessoa();
 	private List<Pessoa> PessoaList;
-	private Livro livro;
+	private Livro livro = new Livro();
 
 	// Getters and Setters
 

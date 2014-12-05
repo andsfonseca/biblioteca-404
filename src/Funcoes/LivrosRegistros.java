@@ -14,7 +14,10 @@ import Entidades.Pessoa;
 
 public class LivrosRegistros {
 
-	public void salvar(Livro livro, Pessoa pessoa) {
+	public void salvar(Livro livro, Pessoa login) {
+		
+		Pessoa pessoa = new PessoasRegistros().peopleRequest(login);
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 		if (livro.getNome() != "" || pessoa.getNome() != null) {
 			DAO<Livro> dao = new DAO<Livro>(Livro.class);
