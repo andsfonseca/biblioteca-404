@@ -14,21 +14,20 @@
 </h:head>
 
 <h:body style="height: 100%; box-sizing: border-box; margin:0">
-	<div
-		style=" margin: 0 auto; position: relative; padding-bottom: 20px;">
+	<div style="margin: 0 auto; position: relative; padding-bottom: 20px;">
 		<div style="position: absolute; top: 0; left: 0;">
 
 			<div style="position: fixed; right: 0; left: 0; margin: 0px;">
 				<div
-					style="margin: 0 auto; text-align: center; color: OldLace; padding: 2px;background-color: steelblue;">
+					style="margin: 0 auto; text-align: center; color: OldLace; padding: 2px; background-color: steelblue;">
 					<h:form>
 						<p:menubar>
-							<p:menuitem value="Tela Inicial" url="index.xhtml"
-								icon="ui-icon-newwin" />
+							<p:menuitem value="Tela Inicial	" url="index.xhtml"
+								icon="ui-icon-newwin" style="margin-right:5px" />
 
 
 							<p:menuitem value="Todos os Registros" url="Registros.xhtml"
-								icon="ui-icon-document"></p:menuitem>
+								icon="ui-icon-document" style="margin-right:5px"></p:menuitem>
 
 
 							<p:submenu label="Visualizar" icon="ui-icon-disk">
@@ -46,25 +45,39 @@
 
 
 							<f:facet name="options">
+
+
 								<p:commandButton style="margin-right:10px" type="button"
 									value="Fazer Login" rendered="#{empty bPessoa.login.nome}"
 									icon="ui-icon-person" onclick="PF('windowsLogin').show();" />
-								<p:commandButton style="margin-right:10px" id="Btn"
-									type="button" value="#{bPessoa.login.username}"
+								
+								<h:graphicImage rendered="#{not empty bPessoa.login.nome}" value="http://www.gravatar.com/avatar/#{bPessoa.login.emailhash}" style="border-radius:10px; width: 22px; margin-right:5px;"/>
+								
+								<p:outputLabel id="usernametxt"
+									value="#{bPessoa.login.username}"
 									rendered="#{not empty bPessoa.login.nome}"
-									icon="ui-icon-person" action="#{bPessoa.logout}" update="@all" />
-								<p:overlayPanel id="Panel" for="Btn" hideEffect="fade">
-									<h:panelGrid columns="2">
-										<pe:gravatar value="#{bPessoa.login.email}"></pe:gravatar>
-										<h:panelGrid columns="1">
-											<div style="margin-bottom: 10px;">#{bPessoa.login.nome}</div>
-											<div style="margin-top: 15px">#{bPessoa.login.email}</div>
-										</h:panelGrid>
-									</h:panelGrid>
+									style="margin-right:10px" />
 
-									<p:commandButton style="margin-left:110px"
-										action="#{bPessoa.logout}" value="Logout" update="@all" />
-								</p:overlayPanel>
+								<p:commandButton action="#{bPessoa.logout}" icon="ui-icon-power"
+									rendered="#{not empty bPessoa.login.nome}" update="@all" />
+
+								<p:commandButton id="btn" type="button" icon="ui-icon-gear" />
+								<p:menu overlay="true" trigger="btn" my="left top"
+									at="left bottom">
+									<p:submenu label="#{bPessoa.login.username}"
+										rendered="#{not empty bPessoa.login.nome}">
+										<p:menuitem value="Administrador" icon="ui-icon-circle-check"
+											rendered="#{bPessoa.login.adm}" />
+										<p:menuitem value="Logout" ajax="false" update="@all"
+											actionListener="#{bPessoa.logout}" icon="ui-icon-close" />
+									</p:submenu>
+									<p:submenu label="Ajuda">
+										<p:menuitem value="Primeiro Uso" icon="ui-icon-notice" />
+										<p:menuitem value="Contate-nos" icon="ui-icon-mail-open" />
+									</p:submenu>
+
+								</p:menu>
+
 								<p:commandButton style="margin-right:10px" type="button"
 									value="Redmine"
 									onclick="location.href='http://redmine.404softhouse.com.br/'"
@@ -84,8 +97,9 @@
 
 			<div id="cabecalho"
 				style="background-color: steelblue; border-radius: 5px; border: 2px solid steelblue;">
-				<p style="color: white; margin-left: 100px; font-size: 20px"><br/><br/>
-					<STRONG style="font-size: 100px; margin-top:10px">404</STRONG> Softhouse
+				<p style="color: white; margin-left: 100px; font-size: 20px">
+					<br /> <br /> <STRONG style="font-size: 100px; margin-top: 10px">404</STRONG>
+					Softhouse
 				</p>
 				<p:separator style="border: 2px solid white"></p:separator>
 
@@ -120,11 +134,6 @@
 			</p:dialog>
 		</div>
 
-		<div id="canto"
-			style="position: fixed; top: 10px; float: right; opacity: 0.65; -moz-opacity: 0.65; filter: alpha(opacity = 65);">
-			<p:commandButton icon="ui-icon-circle-check"
-				rendered="#{bPessoa.login.adm}" />
-		</div>
 	</div>
 
 

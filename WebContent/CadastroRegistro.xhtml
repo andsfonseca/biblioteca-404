@@ -30,7 +30,7 @@
                  				 	#{book.pessoa.nome}
 								</p:column>
 								
-								<p:column width="60">
+								<p:column width="80">
 									<f:facet name="header">Ações</f:facet>
 									<p:commandButton value="Pegar" update=":nomelivro" ajax="false">
 											<f:setPropertyActionListener value="#{book}" target="#{bRegistro.livro}" type="button"/>
@@ -57,7 +57,7 @@
                  					#{user.nome}
 								</p:column>
 								
-								<p:column width="60">
+								<p:column width="80">
 									<f:facet name="header">Ações</f:facet>
 									<p:commandButton value="Pegar" update=":nomepes" ajax="false">
 											<f:setPropertyActionListener value="#{user}" target="#{bRegistro.pessoa}" type="button"/>

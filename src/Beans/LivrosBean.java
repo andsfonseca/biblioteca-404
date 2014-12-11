@@ -44,11 +44,9 @@ public class LivrosBean {
 
 	public List<Livro> getLivroList() {
 
-		// Checa se a lista já está completa
-		if (LivroList == null) {
-			LivroList = new DAO<Livro>(Livro.class).listar();
-			System.out.println("Recuperando Lista de Livros no Banco de Dados");
-		}
+		LivroList = new DAO<Livro>(Livro.class).listar();
+		System.out.println("Recuperando Lista de Livros no Banco de Dados");
+		
 		return LivroList;
 	}
 

@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.ejb.criteria.expression.function.LowerFunction;
+
+import Funcoes.Criptografia;
+
 @Entity
 public class Pessoa {
 	
@@ -14,9 +18,14 @@ public class Pessoa {
 	private String nome;
 	private String username;
 	private String email;
+	private String emailhash;
 	private String senha;
 	private Boolean adm;
 
+	
+	public String getEmailhash() {
+		return emailhash;
+	}
 
 	public String getNome() {
 		return nome;
@@ -35,6 +44,7 @@ public class Pessoa {
 	}
 
 	public void setEmail(String email) {
+		emailhash = new Criptografia().md5Hex(email.trim().toLowerCase());
 		this.email = email;
 	}
 
