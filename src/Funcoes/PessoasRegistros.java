@@ -19,17 +19,27 @@ import Entidades.Registro;
 public class PessoasRegistros {
 
 	public void salvar(Pessoa pessoa) throws NoSuchAlgorithmException {
-		Criptografia c = new Criptografia();
+		DAO<Pessoa> dao = new DAO<Pessoa>(Pessoa.class);
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		DAO<Pessoa> dao = new DAO<Pessoa>(Pessoa.class);
+		String cmd = "Select e from Pessoa e where e.username = '"
+				+ pessoa.getUsername() + "'";
+		if (dao.validade(cmd)) {
+			context.addMessage(null, new FacesMessage("Erro!",
+					"Este nome de usuário já existe"));
+		}
 
-		pessoa.setSenha(c.criptografia(pessoa.getSenha()));
+		else {
+			Criptografia c = new Criptografia();
 
-		dao.salva(pessoa);
-		context.addMessage(null, new FacesMessage("Sucesso!", pessoa.getNome()
-				+ " adicionado com sucesso!"));
-		System.out.println("Usuário Salvo com Sucesso no Banco de Dados");
+			pessoa.setSenha(c.criptografia(pessoa.getSenha()));
+
+			dao.salva(pessoa);
+			context.addMessage(null,
+					new FacesMessage("Sucesso!", pessoa.getNome()
+							+ " adicionado com sucesso!"));
+			System.out.println("Usuário Salvo com Sucesso no Banco de Dados");
+		}
 	}
 
 	public void remover(Pessoa pessoa) {

@@ -15,7 +15,7 @@ public class PessoasLogin {
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		DAO<Pessoa> dao = new DAO<Pessoa>(Pessoa.class);
-		System.out.println("AQUI1");
+		System.out.println("Verificando Login");
 		if (login.getUsername() == null && login.getSenha() == null) {
 			context.addMessage(null, new FacesMessage("Erro!",
 					"Dados incorretos"));
