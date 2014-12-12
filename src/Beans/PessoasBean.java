@@ -9,12 +9,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.apache.commons.mail.EmailException;
 import org.primefaces.event.CellEditEvent;
 
 import DAO.DAO;
 import Entidades.Livro;
 import Entidades.Pessoa;
 import Entidades.Registro;
+import Funcoes.Email;
 import Funcoes.LivrosRegistros;
 import Funcoes.PessoasLogin;
 import Funcoes.PessoasRegistros;
