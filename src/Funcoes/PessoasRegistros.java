@@ -17,9 +17,10 @@ import Entidades.Pessoa;
 import Entidades.Registro;
 
 public class PessoasRegistros {
+	DAO<Pessoa> dao = new DAO<Pessoa>(Pessoa.class);
 
 	public void salvar(Pessoa pessoa) throws NoSuchAlgorithmException {
-		DAO<Pessoa> dao = new DAO<Pessoa>(Pessoa.class);
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 
 		String cmd = "Select e from Pessoa e where e.username = '"
@@ -141,4 +142,15 @@ public class PessoasRegistros {
 		return pessoa;
 	}
 
+	public void senhaAlterada(String senha, Pessoa login){
+		
+		try {
+			login.setSenha(new Criptografia().criptografia(senha));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		dao.atualizar(login);
+		
+	}
 }

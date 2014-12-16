@@ -41,4 +41,37 @@ public class PessoasLogin {
 		return login;
 	}
 
+	public void esquecer(Pessoa login) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		DAO<Pessoa> dao = new DAO<Pessoa>(Pessoa.class);
+
+		if (login.getUsername() == null && login.getEmail() == null) {
+			context.addMessage(null, new FacesMessage("Erro!",
+					"Dados incorretos"));
+			System.out.println("Dados incorretos foram imformados");
+		} else {
+
+			String cmd = "Select e from Pessoa e where e.username = '"
+					+ login.getUsername() + "' and e.senha = '"
+					+ login.getEmail() + "'";
+
+			if (dao.validade(cmd)) {
+				List<Pessoa> listPessoa = dao.commandlineSingle(cmd);
+
+				for (Pessoa pessoa : listPessoa) {
+					login = pessoa;
+				}
+				
+				EmailMessages emsg = new EmailMessages();
+				String senha = new GeraSenha().Gera();
+				PessoasLogin pl = new PessoasLogin();
+				pl.esquecer(login);
+				String link = "Senha";
+				emsg.esqueceSenha(login, senha, link);
+				
+			}
+
+		}
+	}
+
 }
