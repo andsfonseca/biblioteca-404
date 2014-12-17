@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import DAO.DAO;
+import Entidades.Estado;
 import Entidades.Pessoa;
 
 public class PessoasLogin {
@@ -18,7 +19,7 @@ public class PessoasLogin {
 		System.out.println("Verificando Login");
 		if (login.getUsername() == null && login.getSenha() == null) {
 			context.addMessage(null, new FacesMessage("Erro!",
-					"Dados incorretos"));
+					"Dados incompletos"));
 			System.out.println("Dados incorretos foram imformados");
 		} else {
 			String senha = new Criptografia().criptografia(login.getSenha());
@@ -35,6 +36,9 @@ public class PessoasLogin {
 									"Bem Vindo " + login.getNome()));
 
 				}
+			}else{
+				context.addMessage(null, new FacesMessage("Erro!",
+						"Usuário ou senha Incorretos"));
 			}
 
 		}
@@ -67,7 +71,9 @@ public class PessoasLogin {
 				PessoasRegistros pl = new PessoasRegistros();
 				pl.senhaAlterada(senha, login);
 				emsg.esqueceSenha(login, senha);
-				
+				Estado estado = new Estado();
+				estado.setSenhaesquecida(true);
+				login.setEstado(estado);
 			}
 
 		}

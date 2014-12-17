@@ -15,11 +15,11 @@
 						<h:panelGrid columns="2" style="witdh: 100px">
 						
 						<p:outputLabel value="Nome:  " />
-						<p:inputText required="true" value="#{bPessoa.pessoa.nome}"/>
+						<p:inputText required="true" value="#{bPessoa.pessoa.nome}" style="text-transform: capitalize;" placeholder="João Maria"/>
 						<p:outputLabel value="Username:  " style="margin-left: 5px"/>
-						<p:inputText required="true" value="#{bPessoa.pessoa.username}"/>
+						<p:inputText required="true" value="#{bPessoa.pessoa.username}" placeholder="Jmaria"/>
 						<p:outputLabel value="E-mail:  "/>
-						<p:inputText id="txtmail" required="true" value="#{bPessoa.pessoa.email}" validatorMessage="E-mail incorreto"><f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" /></p:inputText>
+						<p:inputText id="txtmail" required="true" value="#{bPessoa.pessoa.email}" validatorMessage="E-mail incorreto" placeholder="Jmaria@mail.com"><f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" /></p:inputText>
 						
 						<p:outputLabel value="Senha:  " style="margin-left: 5px"/>
 						<p:password id="txtsenha" required="true" value="#{bPessoa.pessoa.senha}" />

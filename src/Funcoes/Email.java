@@ -12,7 +12,7 @@ public class Email {
 		email.setFrom(mail, nome); // remetente
 		email.setSubject(title);// assunto do e-mail
 		email.setMsg(msg); // conteudo do e-mail
-		email.setAuthentication("andsf97@gmail.com", "");  
+		email.setAuthentication("andsf97@gmail.com", "Lucky8632");  
         email.setSmtpPort(465);  
         email.setSSL(true);  
         email.setTLS(true);  
