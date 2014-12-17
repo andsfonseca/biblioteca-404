@@ -8,8 +8,8 @@ public class Email {
 
 	public void SimpleMail(String nome, String mail, String msg, String title) throws EmailException {
 		email.setHostName("smtp.gmail.com"); // o servidor SMTP para envio do e-mail
-		email.addTo(mail, nome); // destinat√°rio
-		email.setFrom("andsf97@gmail.com", "Biblioteca 404"); // remetente
+		email.addTo(mail, nome); // destinat·rio
+		email.setFrom(mail, nome); // remetente
 		email.setSubject(title);// assunto do e-mail
 		email.setMsg(msg); // conteudo do e-mail
 		email.setAuthentication("andsf97@gmail.com", "");  

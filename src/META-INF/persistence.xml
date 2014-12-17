@@ -9,13 +9,11 @@
 	<persistence-unit name="Biblioteca-404">
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>Entidades.Livro</class>
 		<class>Entidades.Pessoa</class>
-		<class>Entidades.Registro</class>
 		<class>Entidades.Estado</class>
-
-		
-      
+		<class>Entidades.Livro</class>
+		<class>Entidades.Registro</class>
+		      
 	<properties>
        
 			<!-- poderia ser: create,create-drop -->
