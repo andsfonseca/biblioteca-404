@@ -52,22 +52,21 @@ public class PessoasLogin {
 		} else {
 
 			String cmd = "Select e from Pessoa e where e.username = '"
-					+ login.getUsername() + "' and e.senha = '"
+					+ login.getUsername() + "' and e.email = '"
 					+ login.getEmail() + "'";
-
+			System.out.println("Passou aqui1" + cmd);
 			if (dao.validade(cmd)) {
 				List<Pessoa> listPessoa = dao.commandlineSingle(cmd);
-
+				System.out.println("Passou aqui12");
 				for (Pessoa pessoa : listPessoa) {
 					login = pessoa;
 				}
 				
 				EmailMessages emsg = new EmailMessages();
 				String senha = new GeraSenha().Gera();
-				PessoasLogin pl = new PessoasLogin();
-				pl.esquecer(login);
-				String link = "Senha";
-				emsg.esqueceSenha(login, senha, link);
+				PessoasRegistros pl = new PessoasRegistros();
+				pl.senhaAlterada(senha, login);
+				emsg.esqueceSenha(login, senha);
 				
 			}
 

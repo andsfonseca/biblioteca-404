@@ -7,7 +7,7 @@
 	xmlns:pe="http://primefaces.org/ui/extensions">
 <h:head>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>404 SoftHouse</title>
 	<h:outputStylesheet library="css" name="stylesheet.css" />
 
@@ -50,9 +50,11 @@
 								<p:commandButton style="margin-right:10px" type="button"
 									value="Fazer Login" rendered="#{empty bPessoa.login.nome}"
 									icon="ui-icon-person" onclick="PF('windowsLogin').show();" />
-								
-								<h:graphicImage rendered="#{not empty bPessoa.login.nome}" value="http://www.gravatar.com/avatar/#{bPessoa.login.emailhash}" style="border-radius:10px; width: 22px; margin-right:5px;"/>
-								
+
+								<h:graphicImage rendered="#{not empty bPessoa.login.nome}"
+									value="http://www.gravatar.com/avatar/#{bPessoa.login.emailhash}"
+									style="border-radius:10px; width: 22px; margin-right:5px;" />
+
 								<p:outputLabel id="usernametxt"
 									value="#{bPessoa.login.username}"
 									rendered="#{not empty bPessoa.login.nome}"
@@ -72,7 +74,8 @@
 											actionListener="#{bPessoa.logout}" icon="ui-icon-close" />
 									</p:submenu>
 									<p:submenu label="Ajuda">
-										<p:menuitem value="Primeiro Uso" icon="ui-icon-notice" onclick="PF('windowsprimeiro').show();"/>
+										<p:menuitem value="Primeiro Uso" icon="ui-icon-notice"
+											onclick="PF('windowsprimeiro').show();" />
 										<p:menuitem value="Contate-nos" icon="ui-icon-mail-open" />
 									</p:submenu>
 
@@ -130,16 +133,23 @@
 						<p:commandButton style="margin-top:4px" value="Fazer Login"
 							action="#{bPessoa.elogin}" update="@all" />
 					</center>
+					<br />
+					<p:commandLink style="margin-top:4px"
+						value="Nao consigo acessar minha conta"
+						onclick="location.href='HelpScreenSenha.xhtml'" update="@all" />
 				</h:form>
 			</p:dialog>
 		</div>
-		
+
 		<div id="firstuse">
-			<p:dialog header="Configuracoes de Primeiro uso" widgetVar="windowsprimeiro"
-				dynamic="true" resizable="false">
+			<p:dialog header="Configuracoes de Primeiro uso"
+				widgetVar="windowsprimeiro" dynamic="true" resizable="false">
 				<h:form>
-					<p:outputLabel value="A mudanca no banco de dados ocorre frequentemente, por momentos o software pode nao reconhecer um administrador no sistema"/><br/>
-					<p:outputLabel value="Execute esta opcao apenas se tiver problemas de acesso"/>
+					<p:outputLabel
+						value="A mudanca no banco de dados ocorre frequentemente, por momentos o software pode nao reconhecer um administrador no sistema" />
+					<br />
+					<p:outputLabel
+						value="Execute esta opcao apenas se tiver problemas de acesso" />
 					<center>
 						<p:commandButton style="margin-top:4px" value="Primeiro Uso"
 							action="#{bFirst.firstI}" update="@all" />

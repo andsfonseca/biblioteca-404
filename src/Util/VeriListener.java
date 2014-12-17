@@ -19,6 +19,7 @@ public class VeriListener implements PhaseListener{
 		 if("/index.xhtml".equals(context.getViewRoot().getViewId()) || 
 			"/Registros.xhtml".equals(context.getViewRoot().getViewId()) ||
 			"/VisualizarLivros.xhtml".equals(context.getViewRoot().getViewId()) ||
+			"/HelpScreenSenha.xhtml".equals(context.getViewRoot().getViewId()) ||
 			"/VisualizarUsuarios.xhtml".equals(context.getViewRoot().getViewId())){
 			 
 			 return;

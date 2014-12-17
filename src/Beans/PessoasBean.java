@@ -133,5 +133,10 @@ public class PessoasBean {
 	public boolean logado() {
 		return login.getNome() != null;
 	}
+	
+	public void esqueceSenha(){
+		
+		PLog.esquecer(login);
+	}
 
 }
