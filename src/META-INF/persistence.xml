@@ -12,6 +12,7 @@
 		<class>Entidades.Livro</class>
 		<class>Entidades.Pessoa</class>
 		<class>Entidades.Registro</class>
+		<class>Entidades.Estado</class>
 
 		
       

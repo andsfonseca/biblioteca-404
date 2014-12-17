@@ -3,6 +3,7 @@ package Entidades;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.hibernate.ejb.criteria.expression.function.LowerFunction;
 
@@ -14,13 +15,16 @@ public class Pessoa {
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	private String nome;
 	private String username;
 	private String email;
 	private String emailhash;
 	private String senha;
 	private Boolean adm;
+	
+	@OneToOne
+	private Estado estado;
 
 	
 	public String getEmailhash() {
@@ -72,4 +76,11 @@ public class Pessoa {
 		this.adm = adm;
 	}
 	
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 }
