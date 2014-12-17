@@ -14,7 +14,8 @@
 </h:head>
 
 <h:body style="height: 100%; box-sizing: border-box; margin:0">
-	<div style="margin: 0 auto; position: relative; padding-bottom: 20px;">
+	<div
+		style="margin: 0 auto; position: relative; padding-bottom: 165px; min-height: 100%;">
 		<div style="position: absolute; top: 0; left: 0;">
 
 			<div style="position: fixed; right: 0; left: 0; margin: 0px;">
@@ -31,7 +32,7 @@
 
 
 							<p:submenu label="Visualizar" icon="ui-icon-disk">
-								<p:menuitem value="Usuarios" url="VisualizarUsuarios.xhtml"></p:menuitem>
+								<p:menuitem value="Usuários" url="VisualizarUsuarios.xhtml"></p:menuitem>
 								<p:menuitem value="Livros" url="VisualizarLivros.xhtml"></p:menuitem>
 							</p:submenu>
 
@@ -108,17 +109,20 @@
 
 			</div>
 
-			<div id="corpo" style="padding-bottom: 65px;">
+			<div id="corpo" style="overflow: auto; padding-bottom: 165px;">
 				<ui:insert name="conteudo" />
 			</div>
 
+
+		</div>
+		<DIV id="footer" style="width: 100%; position: fixed; bottom: 0;">
 			<div id="rodape"
-				style="background-color: steelblue; border-radius: 5px; border: 2px solid OldLace; position: absolute; width: 99.7%; bottom: 0;">
+				style="background-color: steelblue; border-radius: 5px; border: 2px solid OldLace;clear:both; width: 98%;
+  margin:  0 auto; padding: 10px;">
 				<H5 style="color: white; text-align: center;">404 Softhouse.
 					Todos os Direitos Reservados</H5>
 			</div>
-		</div>
-
+		</DIV>
 		<div id="login">
 			<p:dialog header="Fazer Login" widgetVar="windowsLogin"
 				dynamic="true" resizable="false">
@@ -135,21 +139,21 @@
 					</center>
 					<br />
 					<p:commandLink style="margin-top:4px"
-						value="Nao consigo acessar minha conta"
+						value="Não consigo acessar minha conta"
 						onclick="location.href='HelpScreenSenha.xhtml'" update="@all" />
 				</h:form>
 			</p:dialog>
 		</div>
 
 		<div id="firstuse">
-			<p:dialog header="Configuracoes de Primeiro uso"
+			<p:dialog header="Configurações de Primeiro uso"
 				widgetVar="windowsprimeiro" dynamic="true" resizable="false">
 				<h:form>
 					<p:outputLabel
-						value="A mudanca no banco de dados ocorre frequentemente, por momentos o software pode nao reconhecer um administrador no sistema" />
+						value="A mudança no banco de dados ocorre frequentemente, por momentos o software pode não reconhecer um administrador no sistema" />
 					<br />
 					<p:outputLabel
-						value="Execute esta opcao apenas se tiver problemas de acesso" />
+						value="Execute esta opção apenas se tiver problemas de acesso" />
 					<center>
 						<p:commandButton style="margin-top:4px" value="Primeiro Uso"
 							action="#{bFirst.firstI}" update="@all" />
