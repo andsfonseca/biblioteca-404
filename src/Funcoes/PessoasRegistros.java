@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.CellEditEvent;
 
 import DAO.DAO;
+import Entidades.Estado;
 import Entidades.Livro;
 import Entidades.Pessoa;
 import Entidades.Registro;
@@ -32,8 +33,10 @@ public class PessoasRegistros {
 
 		else {
 			Criptografia c = new Criptografia();
-
+			Estado estado = new Estado();
+			estado.setSenhaesquecida(false);
 			pessoa.setSenha(c.criptografia(pessoa.getSenha()));
+			pessoa.setEstado(estado);
 
 			dao.salva(pessoa);
 			context.addMessage(null,

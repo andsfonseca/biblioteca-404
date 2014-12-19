@@ -32,6 +32,7 @@ public class PessoasBean {
 	private List<Pessoa> PessoaList;
 	private Livro livro = new Livro();
 	private String check;
+	private String check2;
 
 	// Getters and Setters
 
@@ -56,11 +57,14 @@ public class PessoasBean {
 	}
 
 	public Pessoa getLogin() {
+		
 		return login;
 	}
 
 	public void setLogin(Pessoa login) {
 		this.login = login;
+		if(!login.getEstado().isSenhaesquecida())
+	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Watch out for PrimeFaces."));
 	}
 
 	public void setPessoa(Pessoa pessoa) {
@@ -137,6 +141,14 @@ public class PessoasBean {
 	public void esqueceSenha(){
 		
 		PLog.esquecer(login);
+	}
+
+	public String getCheck2() {
+		return check2;
+	}
+
+	public void setCheck2(String check2) {
+		this.check2 = check2;
 	}
 
 }

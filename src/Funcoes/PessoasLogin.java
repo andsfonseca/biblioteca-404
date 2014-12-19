@@ -69,11 +69,13 @@ public class PessoasLogin {
 				EmailMessages emsg = new EmailMessages();
 				String senha = new GeraSenha().Gera();
 				PessoasRegistros pl = new PessoasRegistros();
-				pl.senhaAlterada(senha, login);
-				emsg.esqueceSenha(login, senha);
 				Estado estado = new Estado();
+				
 				estado.setSenhaesquecida(true);
 				login.setEstado(estado);
+				pl.senhaAlterada(senha, login);
+				emsg.esqueceSenha(login, senha);
+				
 			}
 
 		}

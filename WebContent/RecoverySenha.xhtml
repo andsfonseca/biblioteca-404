@@ -13,11 +13,11 @@
 				style="margin-bottom:20px; margin-top:20px; max-width: 430px; text-align:center">
 				<h:panelGrid columns="2">
 					<p:outputLabel value="Senha Atual: " />
-					<p:inputText />
+					<p:password id="txtcheck2" required="true" value="#{bPessoa.check2}" />
 					<p:outputLabel value="Nova Senha: " />
-					<p:inputText />
+					<p:password id="txtsenha" required="true" value="#{bPessoa.pessoa.senha}" />
 					<p:outputLabel value="Confirmar Senha: " />
-					<p:inputText />
+					<p:password id="txtcheck" required="true" value="#{bPessoa.check}" />
 				</h:panelGrid>
 				<p:commandButton value="Enviar Dados" />
 				<h:form>

@@ -72,7 +72,9 @@
 										<p:menuitem value="Administrador" icon="ui-icon-circle-check"
 											rendered="#{bPessoa.login.adm}" />
 										<p:menuitem value="Alterar Senha" ajax="false" update="@all"
-											url="RecoverySenha.xhtml" />
+											url="RecoverySenha.xhtml" rendered="#{!bPessoa.login.estado.senhaesquecida}"/>
+										<p:menuitem value="Alterar Senha" ajax="false" update="@all"
+											url="RecoverySenha.xhtml" style="Color: FireBrick" rendered="#{bPessoa.login.estado.senhaesquecida}"/>
 										<p:menuitem value="Logout" ajax="false" update="@all"
 											actionListener="#{bPessoa.logout}" icon="ui-icon-close" />
 									</p:submenu>
@@ -97,8 +99,8 @@
 		</div>
 
 		<div id="all" style="min-height: 100%;">
-			<div id="mensagens" >
-				<p:growl id="messages"	/>
+			<div id="mensagens">
+				<p:growl id="messages" />
 			</div>
 
 			<div id="cabecalho"
@@ -119,8 +121,7 @@
 		</div>
 		<DIV id="footer" style="width: 100%; position: fixed; bottom: 0;">
 			<div id="rodape"
-				style="background-color: steelblue; border-radius: 5px; border: 2px solid OldLace;clear:both; width: 98%;
-  margin:  0 auto; padding: 10px;">
+				style="background-color: steelblue; border-radius: 5px; border: 2px solid OldLace; clear: both; width: 98%; margin: 0 auto; padding: 10px;">
 				<H5 style="color: white; text-align: center;">404 Softhouse.
 					Todos os Direitos Reservados</H5>
 			</div>
