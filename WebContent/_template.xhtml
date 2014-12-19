@@ -15,7 +15,7 @@
 
 <h:body style="height: 100%; box-sizing: border-box; margin:0">
 	<div
-		style="margin: 0 auto; position: relative; padding-bottom: 165px; min-height: 100%;">
+		style="margin: 0 auto; position: relative; padding-bottom: 0px; min-height: 100%;">
 		<div style="position: absolute; top: 0; left: 0;">
 
 			<div style="position: fixed; right: 0; left: 0; margin: 0px;">
@@ -71,6 +71,8 @@
 										rendered="#{not empty bPessoa.login.nome}">
 										<p:menuitem value="Administrador" icon="ui-icon-circle-check"
 											rendered="#{bPessoa.login.adm}" />
+										<p:menuitem value="Alterar Senha" ajax="false" update="@all"
+											url="RecoverySenha.xhtml" />
 										<p:menuitem value="Logout" ajax="false" update="@all"
 											actionListener="#{bPessoa.logout}" icon="ui-icon-close" />
 									</p:submenu>
@@ -163,9 +165,6 @@
 		</div>
 
 	</div>
-
-
-
 
 </h:body>
 </html>
