@@ -150,5 +150,17 @@ public class PessoasBean {
 	public void setCheck2(String check2) {
 		this.check2 = check2;
 	}
+	
+	public void mudaSenha() throws NoSuchAlgorithmException{
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		if (check.equals(pessoa.getSenha())) {
+
+			PReg.salvar(pessoa);
+		} else {
+			context.addMessage(null, new FacesMessage("Erro!",
+					"Senhas não conferem"));
+		}
+	}
 
 }

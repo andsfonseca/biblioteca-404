@@ -156,4 +156,19 @@ public class PessoasRegistros {
 		dao.atualizar(login);
 		
 	}
+
+public void mudaSenha(Pessoa pessoa, Pessoa login, String senhaAtual) throws NoSuchAlgorithmException{
+	FacesContext context = FacesContext.getCurrentInstance();
+	if(login.getSenha().equals(new Criptografia().criptografia(senhaAtual))){
+		login.setSenha(new Criptografia().criptografia(pessoa.getSenha()));
+		dao.atualizar(login);
+		context.addMessage(null,
+				new FacesMessage("Sucesso!",  "A sua senha foi alterada com sucesso!"));
+	}else{
+		context.addMessage(null,
+				new FacesMessage("Erro", "Senha Incorreta"));
+	}
 }
+
+}
+
