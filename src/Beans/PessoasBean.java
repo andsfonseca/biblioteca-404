@@ -64,7 +64,7 @@ public class PessoasBean {
 	public void setLogin(Pessoa login) {
 		this.login = login;
 		if(!login.getEstado().isSenhaesquecida())
-	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Watch out for PrimeFaces."));
+	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atenção!", "É necessário que mude sua senha!"));
 	}
 
 	public void setPessoa(Pessoa pessoa) {
