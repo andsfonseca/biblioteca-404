@@ -124,9 +124,9 @@ public class PessoasBean {
 		this.login = PLog.efetuaLogin(login);
 	}
 
-	public void logout() {
+	public String logout() {
 		this.login = new Pessoa();
-
+		return "index?faces-redirect=true";
 	}
 
 	public void salvarLivro() {

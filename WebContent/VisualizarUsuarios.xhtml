@@ -15,7 +15,7 @@
 				<p:tab title="Visualizar Usuários">
 					<p:dataTable value="#{bPessoa.pessoaList}" var="user"
 						style="Witdh: 18px;" editable="true" editMode="cell"
-						emptyMessage="Usuários não cadastrados">
+						emptyMessage="Usuários não cadastrados" scrollable="true" scrollHeight="400">
 						<p:ajax event="cellEdit" listener="#{bPessoa.alterar}" />
 						
 						<p:column width="80">
@@ -42,7 +42,7 @@
 							</p:cellEditor>
 						</p:column>
 
-						<p:column filterBy="#{user.email}" filterMatchMode="contains">
+						<p:column filterBy="#{user.email}" filterMatchMode="contains" rendered="#{not empty bPessoa.login.nome}">
 							<f:facet name="header">Email</f:facet>
 							<center>#{user.email}</center>
 						</p:column>

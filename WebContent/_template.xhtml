@@ -20,9 +20,11 @@
 
 			<div style="position: fixed; right: 0; left: 0; margin: 0px;">
 				<div
-					style="margin: 0 auto; text-align: center; color: OldLace; padding: 2px; background-color: steelblue;">
+					style="margin: 0 auto; text-align: center; color: OldLace; padding: 2px; background-color: WhiteSmoke; display:block;">
 					<h:form>
 						<p:menubar>
+							<p:menuitem><p:outputLabel style="color:Steelblue;font-size:20px; margin-left:30px" value="404" />
+										<p:outputLabel style="color:Steelblue;margin-right:30px" value="Softhouse" /> 	 </p:menuitem>
 							<p:menuitem value="Tela Inicial	" url="index.xhtml"
 								icon="ui-icon-newwin" style="margin-right:5px" />
 
@@ -104,16 +106,14 @@
 			</div>
 
 			<div id="cabecalho"
-				style="background-color: steelblue; border-radius: 5px; border: 2px solid steelblue;">
+				style="background-color: Whitesmoke; border-radius: 5px; border: 2px solid whitesmoke;overflow: hidden">
 				<p style="color: white; margin-left: 100px; font-size: 20px">
-					<br /> <br /> <STRONG style="font-size: 100px; margin-top: 10px">404</STRONG>
-					Softhouse
+					<br/>
 				</p>
-				<p:separator style="border: 2px solid white"></p:separator>
 
 			</div>
 
-			<div id="corpo" style="overflow: auto; padding-bottom: 165px;">
+			<div id="corpo" style="padding-bottom: 70px; color:whitesmoke">
 				<ui:insert name="conteudo" />
 			</div>
 
@@ -121,8 +121,8 @@
 		</div>
 		<DIV id="footer" style="width: 100%; position: fixed; bottom: 0;">
 			<div id="rodape"
-				style="background-color: steelblue; border-radius: 5px; border: 2px solid OldLace; clear: both; width: 98%; margin: 0 auto; padding: 10px;">
-				<H5 style="color: white; text-align: center;">404 Softhouse.
+				style="background-color:silver ; border-radius: 5px; border: 2px solid whitesmoke; clear: both; width: 98%; margin: 0 auto; padding: 10px;">
+				<H5 style="color: black; text-align: center;">404 Softhouse.
 					Todos os Direitos Reservados</H5>
 			</div>
 		</DIV>
