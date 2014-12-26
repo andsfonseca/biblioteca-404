@@ -13,4 +13,6 @@ public class FirstBean {
 	public void firstI() throws NoSuchAlgorithmException {
 		adm.admFirst();
 	}
+	
+	
 }

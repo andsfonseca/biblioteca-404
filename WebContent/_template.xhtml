@@ -10,7 +10,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>404 SoftHouse</title>
 	<h:outputStylesheet library="css" name="stylesheet.css" />
-
+	
 </h:head>
 
 <h:body style="height: 100%; box-sizing: border-box; margin:0">
@@ -20,11 +20,16 @@
 
 			<div style="position: fixed; right: 0; left: 0; margin: 0px;">
 				<div
-					style="margin: 0 auto; text-align: center; color: OldLace; padding: 2px; background-color: WhiteSmoke; display:block;">
+					style="margin: 0 auto; text-align: center; color: OldLace; padding: 2px; background-color: WhiteSmoke; display: block;">
 					<h:form>
 						<p:menubar>
-							<p:menuitem><p:outputLabel style="color:Steelblue;font-size:20px; margin-left:30px" value="404" />
-										<p:outputLabel style="color:Steelblue;margin-right:30px" value="Softhouse" /> 	 </p:menuitem>
+							<p:menuitem>
+								<p:outputLabel
+									style="color:Steelblue;font-size:20px; margin-left:30px"
+									value="404" />
+								<p:outputLabel style="color:Steelblue;margin-right:30px"
+									value="Softhouse" />
+							</p:menuitem>
 							<p:menuitem value="Tela Inicial	" url="index.xhtml"
 								icon="ui-icon-newwin" style="margin-right:5px" />
 
@@ -74,9 +79,11 @@
 										<p:menuitem value="Administrador" icon="ui-icon-circle-check"
 											rendered="#{bPessoa.login.adm}" />
 										<p:menuitem value="Alterar Senha" ajax="false" update="@all"
-											url="RecoverySenha.xhtml" rendered="#{!bPessoa.login.estado.senhaesquecida}"/>
+											url="RecoverySenha.xhtml"
+											rendered="#{!bPessoa.login.estado.senhaesquecida}" />
 										<p:menuitem value="Alterar Senha" ajax="false" update="@all"
-											url="RecoverySenha.xhtml" style="Color: FireBrick" rendered="#{bPessoa.login.estado.senhaesquecida}"/>
+											url="RecoverySenha.xhtml" style="Color: FireBrick"
+											rendered="#{bPessoa.login.estado.senhaesquecida}" />
 										<p:menuitem value="Logout" ajax="false" update="@all"
 											actionListener="#{bPessoa.logout}" icon="ui-icon-close" />
 									</p:submenu>
@@ -106,14 +113,14 @@
 			</div>
 
 			<div id="cabecalho"
-				style="background-color: Whitesmoke; border-radius: 5px; border: 2px solid whitesmoke;overflow: hidden">
+				style="background-color: Whitesmoke; border-radius: 5px; border: 2px solid whitesmoke; overflow: hidden">
 				<p style="color: white; margin-left: 100px; font-size: 20px">
-					<br/>
+					<br />
 				</p>
 
 			</div>
 
-			<div id="corpo" style="padding-bottom: 70px; color:whitesmoke">
+			<div id="corpo" style="padding-bottom: 70px; color: whitesmoke">
 				<ui:insert name="conteudo" />
 			</div>
 
@@ -121,7 +128,7 @@
 		</div>
 		<DIV id="footer" style="width: 100%; position: fixed; bottom: 0;">
 			<div id="rodape"
-				style="background-color:silver ; border-radius: 5px; border: 2px solid whitesmoke; clear: both; width: 98%; margin: 0 auto; padding: 10px;">
+				style="background-color: silver; border-radius: 5px; border: 2px solid whitesmoke; clear: both; width: 98%; margin: 0 auto; padding: 10px;">
 				<H5 style="color: black; text-align: center;">404 Softhouse.
 					Todos os Direitos Reservados</H5>
 			</div>
