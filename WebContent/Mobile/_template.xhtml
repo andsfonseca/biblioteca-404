@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:pm="http://primefaces.org/mobile">
+<h:head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>404 SoftHouse</title>
+	<h:outputStylesheet library="css" name="stylesheet.css" />
+
+</h:head>
+
+<h:body style="height: 100%; box-sizing: border-box; margin:0">
+	<h:form>
+		<pm:content styleClass="jqm-content">
+			<p:commandButton id="btn-basic" value="Basic" type="button" />
+			<pm:field>
+				<p:panel header="Biblioteca da 404 Softhouse">
+					<ui:insert name="conteudo" />
+				</p:panel>
+
+				<p:overlayPanel widgetVar="pnl-basic" at="right"
+					showEffect="overlay">
+					<h2>Panel Content</h2>
+					<p:menu>
+						<p:menuitem value="Link 1" url="#" />
+						<p:menuitem value="Link 2" url="#" />
+						<p:menuitem value="Link 3" url="#" />
+					</p:menu>
+				</p:overlayPanel>
+
+
+			</pm:field>
+		</pm:content>
+	</h:form>
+</h:body>
+</html>
